@@ -4,14 +4,12 @@ import joaovictor.TesteBackendJava.DTOs.EnderecoRequestDTO;
 import joaovictor.TesteBackendJava.entities.Endereco;
 import joaovictor.TesteBackendJava.service.EnderecoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
 
 @RestController
+@RequestMapping("/pessoas")
 public class EnderecoController {
     private final EnderecoService enderecoService;
 
@@ -19,9 +17,17 @@ public class EnderecoController {
         this.enderecoService = enderecoService;
     }
 
-    @PostMapping("/pessoas/{id_pessoa}/enderecos")
+    @PostMapping("/{id_pessoa}/enderecos")
     public ResponseEntity<?> adicionarEndereco(@PathVariable Long id_pessoa,@RequestBody EnderecoRequestDTO dto) throws FileNotFoundException {
-        Endereco endereco =enderecoService.adicionarEndereco(id_pessoa, dto);
+        Endereco endereco = enderecoService.adicionarEndereco(id_pessoa, dto);
         return ResponseEntity.status(201).body(endereco);
     }
+
+    @PutMapping("/{id_pessoa}/enderecos/{id_endereco}")
+    public ResponseEntity<?> atualizarEndereco(@PathVariable Long id_pessoa,
+                                               @PathVariable Long id_endereco, @RequestBody EnderecoRequestDTO dto) throws FileNotFoundException {
+        Endereco endereco = enderecoService.atualizarEndereco(id_pessoa, id_endereco, dto);
+        return ResponseEntity.status(200).body(endereco);
+    }
+
 }

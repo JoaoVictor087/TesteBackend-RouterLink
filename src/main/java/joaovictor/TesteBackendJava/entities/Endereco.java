@@ -27,7 +27,7 @@ public class Endereco {
     @Enumerated(EnumType.STRING)
     private UF uf;
     private String cep;
-    private boolean principal;
+    private Boolean principal;
 
     public Endereco(){}
 
