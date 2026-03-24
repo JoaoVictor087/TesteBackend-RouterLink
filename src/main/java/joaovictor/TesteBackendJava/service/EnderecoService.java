@@ -90,4 +90,18 @@ public class EnderecoService {
 
         return endereco.get();
     }
+
+    @Transactional
+    public void excluirEndereco(Long id_endereco, Long id_pessoa) throws FileNotFoundException {
+        Optional<Pessoa>pessoa = pessoaRepository.findById(id_pessoa);
+        if(pessoa.isEmpty()){
+            throw new FileNotFoundException("Usuário não encontrado");
+        }
+        Optional<Endereco>endereco = enderecoRepository.findById(id_endereco);
+        if(endereco.isEmpty()){
+            throw new FileNotFoundException("Endereço não encontrado");
+        }
+        enderecoRepository.delete(endereco.get());
+        log.info("Endereço excluido com sucesso");
+    }
 }

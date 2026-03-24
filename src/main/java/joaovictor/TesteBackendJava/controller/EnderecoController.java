@@ -30,4 +30,10 @@ public class EnderecoController {
         return ResponseEntity.status(200).body(endereco);
     }
 
+    @DeleteMapping("/{id_pessoa}/enderecos/{id_endereco}")
+    public ResponseEntity<?> excluirEndereco(@PathVariable Long id_pessoa, @PathVariable Long id_endereco) throws FileNotFoundException {
+        enderecoService.excluirEndereco(id_endereco, id_pessoa);
+        return ResponseEntity.noContent().build();
+    }
+
 }
