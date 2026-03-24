@@ -10,8 +10,8 @@ import java.util.UUID;
 @Entity
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
     private String cpf;
@@ -25,7 +25,7 @@ public class Pessoa {
     public Pessoa(){
     }
 
-    public Pessoa(String email, String cpf, String nome, UUID id, LocalDate dataNascimento, List<Telefone> telefones, List<Endereco> enderecos) {
+    public Pessoa(String email, String cpf, String nome, Long id, LocalDate dataNascimento, List<Telefone> telefones, List<Endereco> enderecos) {
         this.email = email;
         this.cpf = cpf;
         this.nome = nome;
@@ -35,7 +35,7 @@ public class Pessoa {
         this.enderecos = enderecos;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,16 +55,8 @@ public class Pessoa {
         return email;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public void setEnderecos(List<Endereco> enderecos) {

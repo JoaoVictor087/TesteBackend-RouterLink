@@ -1,5 +1,6 @@
 package joaovictor.TesteBackendJava.controller;
 
+import jakarta.validation.Valid;
 import joaovictor.TesteBackendJava.DTOs.ErrorResponseDTO;
 import joaovictor.TesteBackendJava.DTOs.PessoaRequestDTO;
 import joaovictor.TesteBackendJava.DTOs.PessoaResponseDTO;
@@ -21,7 +22,7 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrarUsuario(@RequestBody PessoaRequestDTO dto) {
+    public ResponseEntity<?> cadastrarUsuario(@RequestBody @Valid PessoaRequestDTO dto) {
         Pessoa pessoa = pessoaService.cadastrarPessoa(dto);
         PessoaResponseDTO response =
                 new PessoaResponseDTO(pessoa.getId(), pessoa.getNome(), pessoa.getEmail());
