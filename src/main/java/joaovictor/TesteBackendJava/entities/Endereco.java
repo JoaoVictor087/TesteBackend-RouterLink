@@ -1,9 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import joaovictor.TesteBackendJava.enums.UF;
 
 import java.util.UUID;
@@ -13,6 +10,8 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @ManyToOne
+    private Pessoa pessoa;
     private String logradouro;
     private Integer numero;
     private String complemento;
@@ -105,4 +104,5 @@ public class Endereco {
     public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
+
 }

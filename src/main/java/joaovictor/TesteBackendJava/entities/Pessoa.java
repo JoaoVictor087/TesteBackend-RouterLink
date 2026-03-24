@@ -1,9 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,13 +16,15 @@ public class Pessoa {
     private String cpf;
     private String email;
     private LocalDateTime dataNascimento;
-    private List<String> telefones;
+    @OneToMany
+    private List<Telefone> telefones;
+    @OneToMany
     private List<Endereco> enderecos;
 
     public Pessoa(){
     }
 
-    public Pessoa(String email, String cpf, String nome, UUID id, LocalDateTime dataNascimento, List<String> telefones, List<Endereco> enderecos) {
+    public Pessoa(String email, String cpf, String nome, UUID id, LocalDateTime dataNascimento, List<Telefone> telefones, List<Endereco> enderecos) {
         this.email = email;
         this.cpf = cpf;
         this.nome = nome;
@@ -43,7 +42,7 @@ public class Pessoa {
         return enderecos;
     }
 
-    public List<String> getTelefones() {
+    public List<Telefone> getTelefones() {
         return telefones;
     }
 
@@ -71,7 +70,7 @@ public class Pessoa {
         this.enderecos = enderecos;
     }
 
-    public void setTelefones(List<String> telefones) {
+    public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
     }
 
