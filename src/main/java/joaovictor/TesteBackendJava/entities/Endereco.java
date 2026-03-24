@@ -6,13 +6,17 @@ import joaovictor.TesteBackendJava.enums.UF;
 import java.util.UUID;
 
 @Entity
+@Table(name = "enderecos")
 public class Endereco {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;
+
     private String logradouro;
     private Integer numero;
     private String complemento;
@@ -23,7 +27,9 @@ public class Endereco {
     private String cep;
     private boolean principal;
 
-    public Endereco(String complemento, String bairro, String cidade, UF uf, String cep, boolean principal, Integer numero, UUID id, String logradouro) {
+    public Endereco(){}
+
+    public Endereco(String complemento, String bairro, String cidade, UF uf, String cep, boolean principal, Integer numero, Long id, String logradouro) {
         this.complemento = complemento;
         this.bairro = bairro;
         this.cidade = cidade;
@@ -35,7 +41,7 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
@@ -71,7 +77,7 @@ public class Endereco {
         return logradouro;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -105,5 +111,13 @@ public class Endereco {
 
     public void setPrincipal(boolean principal) {
         this.principal = principal;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

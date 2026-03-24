@@ -3,23 +3,26 @@ package joaovictor.TesteBackendJava.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
+@Table(name = "pessoas")
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nome")
     private String nome;
+
+    @Column(name = "cpf", nullable = false)
     private String cpf;
     private String email;
     private LocalDate dataNascimento;
     @OneToMany(mappedBy = "pessoa")
     private List<Telefone> telefones;
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
 
     public Pessoa(){
