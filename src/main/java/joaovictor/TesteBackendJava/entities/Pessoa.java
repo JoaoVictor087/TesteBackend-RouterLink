@@ -2,6 +2,7 @@ package joaovictor.TesteBackendJava.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -15,16 +16,16 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String email;
-    private LocalDateTime dataNascimento;
-    @OneToMany
+    private LocalDate dataNascimento;
+    @OneToMany(mappedBy = "pessoa")
     private List<Telefone> telefones;
-    @OneToMany
+    @OneToMany(mappedBy = "pessoa")
     private List<Endereco> enderecos;
 
     public Pessoa(){
     }
 
-    public Pessoa(String email, String cpf, String nome, UUID id, LocalDateTime dataNascimento, List<Telefone> telefones, List<Endereco> enderecos) {
+    public Pessoa(String email, String cpf, String nome, UUID id, LocalDate dataNascimento, List<Telefone> telefones, List<Endereco> enderecos) {
         this.email = email;
         this.cpf = cpf;
         this.nome = nome;
@@ -46,7 +47,7 @@ public class Pessoa {
         return telefones;
     }
 
-    public LocalDateTime getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
@@ -74,7 +75,7 @@ public class Pessoa {
         this.telefones = telefones;
     }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

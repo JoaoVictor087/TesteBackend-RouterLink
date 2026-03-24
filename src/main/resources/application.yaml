@@ -1,3 +1,6 @@
 spring:
   application:
     name: TesteBackendJava
+  h2:
+    console:
+      enabled: true

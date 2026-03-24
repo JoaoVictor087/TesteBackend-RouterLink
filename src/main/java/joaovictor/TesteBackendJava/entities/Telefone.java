@@ -1,9 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Telefone {
@@ -12,6 +9,10 @@ public class Telefone {
     private Long id;
 
     private String numeroTelefone;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
     public Telefone() {
     }

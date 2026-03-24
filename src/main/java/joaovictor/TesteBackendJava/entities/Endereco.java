@@ -11,13 +11,15 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     private String logradouro;
     private Integer numero;
     private String complemento;
     private String bairro;
     private String cidade;
-    private UF uf; ;
+    @Enumerated(EnumType.STRING)
+    private UF uf;
     private String cep;
     private boolean principal;
 
@@ -104,5 +106,4 @@ public class Endereco {
     public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
-
 }

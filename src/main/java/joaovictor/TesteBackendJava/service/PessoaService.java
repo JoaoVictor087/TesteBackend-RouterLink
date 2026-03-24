@@ -34,7 +34,7 @@ public class PessoaService {
         pessoa.setEnderecos(dto.enderecos());
 
         pessoaRepository.save(pessoa);
-        log.info("Novo usuário cadastrado: ${}", pessoa.getNome());
+        log.info("Novo usuário cadastrado:{}", pessoa.getNome());
         return pessoa;
     }
 
