@@ -1,6 +1,7 @@
 package joaovictor.TesteBackendJava.controller;
 
 import jakarta.validation.Valid;
+import joaovictor.TesteBackendJava.DTOs.EnderecoRequestDTO;
 import joaovictor.TesteBackendJava.DTOs.PessoaRequestDTO;
 import joaovictor.TesteBackendJava.DTOs.PessoaResponseDTO;
 import joaovictor.TesteBackendJava.DTOs.PutPessoaRequestDTO;
@@ -54,4 +55,7 @@ public class PessoaController {
         pessoaService.excluirPessoa(id_pessoa);
         return ResponseEntity.status(204).build();
     }
+
+
+
 }
