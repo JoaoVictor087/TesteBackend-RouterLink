@@ -7,11 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
-public interface PessoaRepository extends JpaRepository<Pessoa, UUID> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     boolean existsByCpf(String cpf);
-    Optional<Pessoa> getById(Long id);
+    Optional<Pessoa> findById(Long id);
     Page<Pessoa> findAll(Pageable page);
 }

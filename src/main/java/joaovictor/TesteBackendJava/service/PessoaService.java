@@ -53,7 +53,6 @@ public class PessoaService {
         pessoa.setCpf(dto.cpf());
         pessoa.setEmail(dto.email());
         pessoa.setDataNascimento(dto.dataNascimento());
-        pessoa.setTelefones(dto.telefones());
         pessoaRepository.save(pessoa);
         log.info("Novo usuário cadastrado:{}", pessoa.getNome());
 
@@ -91,7 +90,7 @@ public class PessoaService {
 
     @Transactional
     public Pessoa alterarDadosPessoa(PutPessoaRequestDTO dto, Long idPessoa) throws FileNotFoundException {
-        Optional<Pessoa> pessoaOptional = pessoaRepository.getById(idPessoa);
+        Optional<Pessoa> pessoaOptional = pessoaRepository.findById(idPessoa);
         if (pessoaOptional.isEmpty()) {
             throw new FileNotFoundException("Pessoa não existe no banco de dados");
         }
@@ -129,11 +128,21 @@ public class PessoaService {
     }
 
     public Pessoa buscarPessoa(Long idPessoa) throws FileNotFoundException{
-        Optional<Pessoa> pessoa = pessoaRepository.getById(idPessoa);
+        Optional<Pessoa> pessoa = pessoaRepository.findById(idPessoa);
         if (pessoa.isEmpty()){
             throw new FileNotFoundException("Usuário não encontrado");
         }
         return pessoa.get();
+    }
+
+    @Transactional
+    public void excluirPessoa(Long idPessoa) throws FileNotFoundException {
+        Optional<Pessoa> pessoa = pessoaRepository.findById(idPessoa);
+        if (pessoa.isEmpty()){
+            throw new FileNotFoundException("Usuário não encontrado");
+        }
+
+        pessoaRepository.deleteById(idPessoa);
     }
 
     public void validarCPF(String cpf) throws CPFException {

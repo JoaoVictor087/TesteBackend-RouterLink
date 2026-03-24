@@ -48,4 +48,10 @@ public class PessoaController {
     public ResponseEntity<?> buscarPessoa(@PathVariable Long id_pessoa) throws FileNotFoundException {
         return ResponseEntity.status(200).body(pessoaService.buscarPessoa(id_pessoa));
     }
+
+    @DeleteMapping("/{id_pessoa}")
+    public ResponseEntity<?>excluirPorId(@PathVariable Long id_pessoa) throws FileNotFoundException {
+        pessoaService.excluirPessoa(id_pessoa);
+        return ResponseEntity.status(204).build();
+    }
 }

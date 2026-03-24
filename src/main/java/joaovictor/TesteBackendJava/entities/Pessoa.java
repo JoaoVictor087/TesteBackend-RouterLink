@@ -1,6 +1,7 @@
 package joaovictor.TesteBackendJava.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.action.internal.OrphanRemovalAction;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,9 +21,9 @@ public class Pessoa {
     private String cpf;
     private String email;
     private LocalDate dataNascimento;
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Telefone> telefones;
-    @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> enderecos;
 
     public Pessoa(){

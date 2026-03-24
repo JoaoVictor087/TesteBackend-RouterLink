@@ -31,7 +31,7 @@ public class ExceptionsHandler {
     public ResponseEntity<ErrorResponseDTO> notFound(FileNotFoundException exception){
         ErrorResponseDTO errorDTO =
                 new ErrorResponseDTO("Campo não encontrado", exception.getMessage(),
-                        "Not FOund", 404 ,LocalDateTime.now());
+                        "Not Found", 404 ,LocalDateTime.now());
         return ResponseEntity.status(404).body(errorDTO);
     }
 
