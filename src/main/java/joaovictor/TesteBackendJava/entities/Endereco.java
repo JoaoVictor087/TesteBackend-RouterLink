@@ -1,5 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import joaovictor.TesteBackendJava.enums.UF;
 
@@ -13,6 +14,7 @@ public class Endereco {
     @Column(name = "id")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
     private Pessoa pessoa;

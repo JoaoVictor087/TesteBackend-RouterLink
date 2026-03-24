@@ -1,5 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class Telefone {
 
     @ManyToOne
     @JoinColumn(name = "pessoa_id", referencedColumnName = "id")
+    @JsonIgnore
     private Pessoa pessoa;
 
     public Telefone() {

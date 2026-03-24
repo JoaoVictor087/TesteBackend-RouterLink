@@ -11,10 +11,11 @@ import joaovictor.TesteBackendJava.exceptions.CadastroException;
 import joaovictor.TesteBackendJava.reporitory.EnderecoRepository;
 import joaovictor.TesteBackendJava.reporitory.PessoaRepository;
 import joaovictor.TesteBackendJava.reporitory.TelefoneRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +86,6 @@ public class PessoaService {
 
             }
         }
-
         return pessoa;
     }
 
@@ -121,6 +121,19 @@ public class PessoaService {
 
         pessoaRepository.save(pessoa);
         return pessoa;
+    }
+
+    public Page<Pessoa> buscarTodos(Pageable pageable){
+        Page<Pessoa>pessoas = pessoaRepository.findAll(pageable);
+        return pessoas;
+    }
+
+    public Pessoa buscarPessoa(Long idPessoa) throws FileNotFoundException{
+        Optional<Pessoa> pessoa = pessoaRepository.getById(idPessoa);
+        if (pessoa.isEmpty()){
+            throw new FileNotFoundException("Usuário não encontrado");
+        }
+        return pessoa.get();
     }
 
     public void validarCPF(String cpf) throws CPFException {
