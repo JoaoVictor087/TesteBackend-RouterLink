@@ -18,6 +18,6 @@ public class Pessoa {
     private String cpf;
     private String email;
     private String dataNascimento;
-    private List<Telefone> telefones;
+    private List<String> telefones;
     private List<Endereco> enderecos;
 }
