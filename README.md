@@ -96,8 +96,8 @@ Java: 21
 
 ```
 git clone https://github.com/JoaoVictor087/TesteBackend-RouterLink.git
-cd /TesteBackend-RouterLink
-gradle run(ou ./gradle run no Linux)
+cd TesteBackend-RouterLink
+./gradlew bootRun
 localhost:8080/swagger-ui/index.html
 ```
 
@@ -316,7 +316,7 @@ Descrição: Adiciona um endereco a uma pessoa.
 }
 ```
 ---
-`PUT /pessoas/{id_pessoa}/enderecos/{id_enredeco}`
+`PUT /pessoas/{id_pessoa}/enderecos/{id_endereco}`
 Descrição: Atualiza um endereço de uma pessoa. É possível atualizar todos os campos ou apenas um.
 
 ***Request Body***:
