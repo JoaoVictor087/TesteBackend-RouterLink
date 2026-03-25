@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import joaovictor.TesteBackendJava.enums.UF;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "enderecos")
 public class Endereco {
@@ -79,10 +77,6 @@ public class Endereco {
         return logradouro;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
@@ -115,11 +109,23 @@ public class Endereco {
         this.principal = principal;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Boolean getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(Boolean principal) {
+        this.principal = principal;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 }

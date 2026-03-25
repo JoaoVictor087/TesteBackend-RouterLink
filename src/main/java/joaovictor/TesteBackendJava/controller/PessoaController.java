@@ -8,7 +8,6 @@ import joaovictor.TesteBackendJava.service.PessoaService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.FileNotFoundException;
 
 @RestController

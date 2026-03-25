@@ -1,8 +1,6 @@
 package joaovictor.TesteBackendJava.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.action.internal.OrphanRemovalAction;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Pessoa {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
     private String email;
     private LocalDate dataNascimento;
@@ -39,24 +37,8 @@ public class Pessoa {
         this.enderecos = enderecos;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public List<Endereco> getEnderecos() {
         return enderecos;
-    }
-
-    public List<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public String getNome() {
@@ -86,4 +68,30 @@ public class Pessoa {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+
 }

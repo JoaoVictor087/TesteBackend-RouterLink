@@ -19,10 +19,6 @@ public class Telefone {
     public Telefone() {
     }
 
-    public Telefone(Long id,String numeroTelefone) {
-        this.numeroTelefone = numeroTelefone;
-        this.id = id;
-    }
 
     public String getNumeroTelefone() {
         return numeroTelefone;
@@ -30,6 +26,10 @@ public class Telefone {
 
     public void setNumeroTelefone(String numeroTelefone) {
         this.numeroTelefone = numeroTelefone;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public Long getId() {
@@ -44,7 +44,4 @@ public class Telefone {
         return pessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 }
