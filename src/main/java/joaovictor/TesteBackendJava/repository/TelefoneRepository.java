@@ -1,4 +1,4 @@
-package joaovictor.TesteBackendJava.reporitory;
+package joaovictor.TesteBackendJava.repository;
 
 import joaovictor.TesteBackendJava.entities.Telefone;
 import org.springframework.data.jpa.repository.JpaRepository;

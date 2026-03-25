@@ -1,4 +1,4 @@
-package joaovictor.TesteBackendJava.reporitory;
+package joaovictor.TesteBackendJava.repository;
 
 import joaovictor.TesteBackendJava.entities.Pessoa;
 import org.springframework.data.domain.Page;

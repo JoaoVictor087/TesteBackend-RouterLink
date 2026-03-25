@@ -35,4 +35,14 @@ public class ExceptionsHandler {
         return ResponseEntity.status(404).body(errorDTO);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponseDTO> erroEnderecoPrincipal(EnderecoException exception){
+        ErrorResponseDTO errorDTO =
+                new ErrorResponseDTO("CONFLITO", exception.getMessage(),
+                        "Conflict", 409 ,LocalDateTime.now());
+        return ResponseEntity.status(409).body(errorDTO);
+    }
+
+
+
 }
